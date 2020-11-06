@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">LandIT</string>
+    <string name="app_name" translatable="false">LandIT</string>
+    <string name="fuel">Fuel</string>
+    <string name="engine">Engine</string>
+    <string name="angle">Angle</string>
+    <string name="score">Score:</string>
+    <string name="bestScore">Best Score:</string>
+    <string name="toStart">Tap anywhere to start</string>
+    <string name="angleChange">Angle Change</string>
+    <string name="engineChange">Engine Change</string>
+    <string name="task">Try to fly as far as you can and land successfully</string>
+    <string name="shuttleDestroyed">Spaceship is destroyed</string>
+    <string name="canBetter">Good Landing</string>
+    <string name="perfectLanding">Perfect Landing</string>
 </resources>

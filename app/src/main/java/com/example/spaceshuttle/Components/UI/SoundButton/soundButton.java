@@ -66,8 +66,9 @@ public class soundButton implements Element {
     }
 
     public boolean touch(MotionEvent event) {
-        if(event.getX() > parameters.getLeft() && event.getX() < parameters.getLeft() + parameters.getWidth() &&
-        event.getY() > parameters.getTop() && event.getY() < parameters.getTop() + parameters.getHeight()){
+        if(event.getAction() == MotionEvent.ACTION_DOWN &&
+                event.getX() > parameters.getLeft() && event.getX() < parameters.getLeft() + parameters.getWidth() &&
+                event.getY() > parameters.getTop() && event.getY() < parameters.getTop() + parameters.getHeight()){
             setMusic(!music);
             return true;
         }else{

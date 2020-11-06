@@ -10,6 +10,9 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="47c8bf22-4e3c-4a0b-8ffc-b18297af93e4" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +23,7 @@
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="5.0_API_22" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -29,18 +32,24 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="spaceShuttle" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
         <option value="resourceFile" />
+        <option value="valueResourceFile" />
         <option value="Class" />
       </list>
     </option>
@@ -48,7 +57,6 @@
   <component name="ProjectId" id="1fGhLgyT8wYnD51G9ifi0GQSuTH" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -56,19 +64,22 @@
     <property name="DEBUGGABLE_PROCESS" value="com.example.spaceshuttle" />
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="5716d33d" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-09-08T12:48:16.847Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-10-31T21:14:20.879Z" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="true" />
+    <property name="android-custom-viewC:/Users/makss/AppData/Local/Android/Sdk/sources/android-29/android/view/View.java_SELECTED" value="View" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/raw" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="multi-representation-previewC:/Users/makss/AppData/Local/Android/Sdk/sources/android-29/android/view/View.java_selected" value="Custom views" />
+    <property name="project.structure.last.edited" value="Build Variants" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.do.not.copy.http.proxy.settings.to.gradle" value="false" />
   </component>
   <component name="PsdUISettings">
-    <option name="MODULE_TAB" value="Default Config" />
+    <option name="MODULE_TAB" value="Signing Configs" />
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -82,6 +93,7 @@
       <recent name="C:\Users\makss\Desktop\spaceShuttle\app\src\main\res\font" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.spaceshuttle.Components.UI.Hand" />
       <recent name="com.example.spaceshuttle.Components.UI.soundButton" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
@@ -98,12 +110,13 @@
       </method>
     </configuration>
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="app" />
+      <module name="spaceShuttle.app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
       <option name="ARTIFACT_NAME" value="" />
       <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="true" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
@@ -139,11 +152,16 @@
       </Native>
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
@@ -167,38 +185,38 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="275" y="42" key="#Inspections/0.0.1366.768@0.0.1366.768" timestamp="1599142601650" />
-    <state x="200" y="116" key="#PSD" timestamp="1598532586101">
+    <state x="200" y="116" key="#PSD" timestamp="1604698198564">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="200" y="116" key="#PSD/0.0.1366.768@0.0.1366.768" timestamp="1598532586100" />
+    <state x="200" y="116" key="#PSD/0.0.1366.768@0.0.1366.768" timestamp="1604698198564" />
     <state x="305" y="40" key="#Plugins" timestamp="1597361109752">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="305" y="40" key="#Plugins/0.0.1366.768@0.0.1366.768" timestamp="1597361109752" />
-    <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599863031763">
+    <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604697707747">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768" timestamp="1599863031763" />
+    <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768" timestamp="1604697707747" />
     <state x="435" y="187" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598448264737">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="435" y="187" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1598448264737" />
-    <state x="680" y="142" key="#com.intellij.ide.util.MemberChooser" timestamp="1599854173671">
+    <state x="680" y="142" key="#com.intellij.ide.util.MemberChooser" timestamp="1604312820925">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="680" y="142" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1599854173671" />
-    <state x="413" y="160" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1595850748037">
+    <state x="680" y="142" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1604312820925" />
+    <state x="363" y="120" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1604162176347">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="413" y="160" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1366.768@0.0.1366.768" timestamp="1595850748037" />
-    <state x="363" y="120" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1596103692316">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="363" y="120" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.768@0.0.1366.768" timestamp="1596103692316" />
+    <state x="363" y="120" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.768@0.0.1366.768" timestamp="1604162176347" />
     <state x="380" y="67" key="#com.intellij.refactoring.encapsulateFields.EncalpsulateFieldsDialog" timestamp="1597587030075">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="380" y="67" key="#com.intellij.refactoring.encapsulateFields.EncalpsulateFieldsDialog/0.0.1366.768@0.0.1366.768" timestamp="1597587030075" />
+    <state x="254" y="308" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1604199374948">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="254" y="308" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1366.768@0.0.1366.768" timestamp="1604199374948" />
     <state x="461" y="243" width="444" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1597337653260">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -223,54 +241,50 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="263" y="139" key="AndroidCreateResourceDirectoryDialog/0.0.1366.768@0.0.1366.768" timestamp="1598448315512" />
-    <state x="263" y="139" key="AndroidCreateResourceFileDialog" timestamp="1597186887537">
+    <state x="263" y="139" key="AndroidCreateResourceFileDialog" timestamp="1604592395433">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="263" y="139" key="AndroidCreateResourceFileDialog/0.0.1366.768@0.0.1366.768" timestamp="1597186887536" />
+    <state x="263" y="139" key="AndroidCreateResourceFileDialog/0.0.1366.768@0.0.1366.768" timestamp="1604592395433" />
     <state x="541" y="197" key="AndroidCreateXmlResourceDialog" timestamp="1599863803858">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="541" y="197" key="AndroidCreateXmlResourceDialog/0.0.1366.768@0.0.1366.768" timestamp="1599863803858" />
-    <state x="538" y="149" key="AndroidProcessChooserDialog" timestamp="1599863394559">
+    <state x="538" y="149" key="AndroidProcessChooserDialog" timestamp="1604698116891">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="538" y="149" key="AndroidProcessChooserDialog/0.0.1366.768@0.0.1366.768" timestamp="1599863394559" />
-    <state width="409" height="466" key="DebuggerActiveHint" timestamp="1595972074768">
+    <state x="538" y="149" key="AndroidProcessChooserDialog/0.0.1366.768@0.0.1366.768" timestamp="1604698116891" />
+    <state width="1323" height="278" key="GridCell.Tab.0.bottom" timestamp="1604700129558">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="409" height="466" key="DebuggerActiveHint/0.0.1366.768@0.0.1366.768" timestamp="1595972074768" />
-    <state width="1323" height="278" key="GridCell.Tab.0.bottom" timestamp="1599934824086">
+    <state width="1323" height="278" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1604700129558" />
+    <state width="1323" height="278" key="GridCell.Tab.0.center" timestamp="1604700129558">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="278" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1599934824086" />
-    <state width="1323" height="278" key="GridCell.Tab.0.center" timestamp="1599934824085">
+    <state width="1323" height="278" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1604700129558" />
+    <state width="1323" height="278" key="GridCell.Tab.0.left" timestamp="1604700129558">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="278" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1599934824085" />
-    <state width="1323" height="278" key="GridCell.Tab.0.left" timestamp="1599934824083">
+    <state width="1323" height="278" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1604700129558" />
+    <state width="1323" height="278" key="GridCell.Tab.0.right" timestamp="1604700129558">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="278" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1599934824083" />
-    <state width="1323" height="278" key="GridCell.Tab.0.right" timestamp="1599934824086">
+    <state width="1323" height="278" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1604700129558" />
+    <state width="1323" height="278" key="GridCell.Tab.1.bottom" timestamp="1604700129558">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="278" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1599934824086" />
-    <state width="1323" height="278" key="GridCell.Tab.1.bottom" timestamp="1599934824088">
+    <state width="1323" height="278" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1604700129558" />
+    <state width="1323" height="278" key="GridCell.Tab.1.center" timestamp="1604700129558">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="278" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1599934824088" />
-    <state width="1323" height="278" key="GridCell.Tab.1.center" timestamp="1599934824087">
+    <state width="1323" height="278" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1604700129558" />
+    <state width="1323" height="278" key="GridCell.Tab.1.left" timestamp="1604700129558">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="278" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1599934824087" />
-    <state width="1323" height="278" key="GridCell.Tab.1.left" timestamp="1599934824087">
+    <state width="1323" height="278" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1604700129558" />
+    <state width="1323" height="278" key="GridCell.Tab.1.right" timestamp="1604700129558">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="278" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1599934824087" />
-    <state width="1323" height="278" key="GridCell.Tab.1.right" timestamp="1599934824088">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="1323" height="278" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1599934824088" />
+    <state width="1323" height="278" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1604700129558" />
     <state x="120" y="0" key="ScreenshotViewer.Dimensions" timestamp="1597359496719">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -295,30 +309,21 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="674" y="0" key="refactoring.ChangeSignatureDialog/0.0.1366.768@0.0.1366.768" timestamp="1599689937004" />
-    <state x="339" y="172" key="run.anything.popup" timestamp="1597679868795">
+    <state x="339" y="172" key="run.anything.popup" timestamp="1604180187704">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="339" y="172" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1597679868795" />
-    <state x="339" y="36" width="672" height="676" key="search.everywhere.popup" timestamp="1599841859919">
+    <state x="339" y="172" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1604180187704" />
+    <state x="339" y="36" width="672" height="676" key="search.everywhere.popup" timestamp="1604314672344">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="339" y="36" width="672" height="676" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1599841859919" />
+    <state x="339" y="36" width="672" height="676" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1604314672344" />
+    <state x="463" y="165" key="strings.multiline.dialog" timestamp="1604593038454">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="463" y="165" key="strings.multiline.dialog/0.0.1366.768@0.0.1366.768" timestamp="1604593038454" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/spaceshuttle/Components/Threads/initThread.java</url>
-          <line>111</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
-      <configuration name="app">
-        <watch expression="soundbutton.isMusic()" language="JAVA" />
-        <watch expression="readAll.getBoolean(&quot;soundValue&quot;, true)" language="JAVA" />
-      </configuration>
       <configuration name="Remote">
         <watch expression="useCamera" language="JAVA" />
         <watch expression="spaceShuttle" language="JAVA" />

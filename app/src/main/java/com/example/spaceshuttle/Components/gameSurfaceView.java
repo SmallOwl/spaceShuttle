@@ -2,6 +2,7 @@ package com.example.spaceshuttle.Components;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -13,6 +14,7 @@ import com.example.spaceshuttle.Components.Threads.saveLandThread;
 import com.example.spaceshuttle.Components.UI.Bar.Bar;
 import com.example.spaceshuttle.Components.UI.Bar.stepBar;
 import com.example.spaceshuttle.Components.UI.Element;
+import com.example.spaceshuttle.Components.UI.Hand.Hand;
 import com.example.spaceshuttle.Components.UI.Joystick.Joystick;
 import com.example.spaceshuttle.Components.UI.SoundButton.soundButton;
 import com.example.spaceshuttle.Components.UI.Text.Text;
@@ -20,6 +22,7 @@ import com.example.spaceshuttle.Constants;
 import com.example.spaceshuttle.GameObjects.Camera.camera;
 import com.example.spaceshuttle.GameObjects.Land.land;
 import com.example.spaceshuttle.GameObjects.Shuttle.shuttle;
+import com.example.spaceshuttle.R;
 import com.example.spaceshuttle.gameAdapter;
 import com.example.spaceshuttle.gameLogic;
 import com.google.android.gms.ads.InterstitialAd;
@@ -50,6 +53,9 @@ public class gameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     private Text menuText;
     private Joystick joystick;
     private soundButton soundbutton;
+    private Text studyText;
+    private Hand hand;
+    private Hand secondHand;
 
     //Игровые объекты
     private land landMap;
@@ -64,6 +70,7 @@ public class gameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     //Реклама
     private int advertisingCounter;
 
+    private int studyState;
     private int state;
     //0 - Холодный запуск
     //1 - Генерация карты
@@ -73,6 +80,9 @@ public class gameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     //5 - Меню после игры
     //6 - Сохранение карты в памяти
     //7 - Реклама
+    //8 - Обучение мощность
+    //9 - Обучение угол
+    //10 - Задача
 
     private SharedPreferences readAll;
     private final InterstitialAd mInterstitialAd;
@@ -91,7 +101,7 @@ public class gameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     }
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        state = readAll.getInt("gameViewState", 0);
+        state = readAll.getInt("gameViewState", -1);
         initthread = new initThread(this, state, readAll);
         initthread.start();
     }
@@ -154,6 +164,7 @@ public class gameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
         saveAll.putFloat("useCameraY",useCamera.getPosY());
     }
 
+    //Дописать
     //Состояния
     public void menu(){
         if(state == 1){
@@ -184,6 +195,16 @@ public class gameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
             gamethread = new gameThread(this,getHolder(),gameElements,useCamera);
             gamethread.setRunning(true);
             gamethread.start();
+        }else if(state == 9){
+            state = 3;
+            Log.d("study", "Start:\t" + state);
+            gameLogic.setStudy(false);
+            gameElements.remove(studyText);
+            gameElements.add(menuText);
+            gameElements.add(bestScore);
+            loadToListsElements(gameElements);
+            gameLogic.setGame(false);
+            Log.d("study", "End:\t" + state);
         }
     }
     public void game(){
@@ -205,6 +226,44 @@ public class gameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
             gameLogic.init(this,angleBar,angleText,engineBar,engineText,fuelBar,fuelText,
                     statistic,menuText,landMap,spaceShuttle,useCamera, joystick);
             gameLogic.setGame(true);
+        }
+    }
+    //Дописать
+    public void study(){
+        if(state == 1){
+            state = 8;
+            clearGameThread();
+            getElements(gameElements);
+            gameElements.clear();
+            gameElements.add(joystick);
+            gameElements.add(soundbutton);
+            gameElements.add(studyText);
+            gameElements.add(hand);
+            saveLandThread saveLandthread = new saveLandThread(landMap, saveAll);
+            saveLandthread.start();
+            gameLogic.init(this,angleBar,angleText,engineBar,engineText,fuelBar,fuelText,
+                    statistic,menuText,landMap,spaceShuttle,useCamera,joystick);
+            gameLogic.setGame(false);
+            gameLogic.setStudy(true);
+            gamethread = new gameThread(this,getHolder(),gameElements,useCamera);
+            gamethread.setRunning(true);
+            gamethread.start();
+            studyState = 0;
+        }else if(state == 8){
+            studyText.setDrawText(getResources().getString(R.string.angleChange));
+            studyText.centerElement();
+            gameElements.remove(hand);
+            gameElements.add(secondHand);
+            state = 9;
+        }else if(state == 9){
+            studyText.setDrawText(getResources().getString(R.string.task));
+            studyText.centerElement();
+            gameElements.remove(secondHand);
+            state = 10;
+        }else{
+            Log.d("study", "End:\t" + state);
+            gameElements.remove(studyText);
+            menu();
         }
     }
     public void menuAfterGame(){
@@ -241,6 +300,9 @@ public class gameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
         spaceShuttle = initthread.getSpaceShuttle();
         useCamera = initthread.getUseCamera();
         soundbutton = initthread.getSoundbutton();
+        studyText = initthread.getStudyText();
+        hand = initthread.getHand();
+        secondHand = initthread.getSecondHand();
         loadToListsElements(gameElements);
     }
     private void loadToListsElements(List<Element> gameElements){
@@ -262,31 +324,53 @@ public class gameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     public boolean onTouchEvent(MotionEvent event) {
         if(gameLogic.isGame()){
             gameTouch(event);
-        }else{
+        }else if(!gameLogic.isStudy()){
             menuTouch(event);
+        }else{
+            studyTouch(event);
         }
         return true;
     }
     private void gameTouch(MotionEvent event){
         joystick.touch(event);
     }
+    private void studyTouch(MotionEvent event){
+        if(!soundbutton.touch(event)){
+            if(state == 8){
+                joystick.touch(event);
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    study();
+                }
+            }else if(state == 9){
+                joystick.touch(event);
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    study();
+                }
+            }else{
+                study();
+            }
+        }
+    }
     private void menuTouch(MotionEvent event){
         if(event.getAction() == MotionEvent.ACTION_DOWN){
             if(!soundbutton.touch(event)){
-                if(state == 3){
-                    game();
-                }else if(state == 5){
-                    if(mInterstitialAd.isLoaded() && advertisingCounter >= Constants.advertisingCounter){
-                        advertisingCounter = 0;
-                        state = 7;
-                        saveAll.putInt("gameViewState", state);
-                        while(!saveAll.commit()){ }
-                        mInterstitialAd.show();
-                    }else{
-                        advertisingCounter++;
-                        initthread = new initThread(this, state, readAll);
-                        initthread.start();
-                    }
+                switch (state){
+                    case 3:
+                        game();
+                        break;
+                    case 5:
+                        if(mInterstitialAd.isLoaded() && advertisingCounter >= Constants.advertisingCounter){
+                            advertisingCounter = 0;
+                            state = 7;
+                            saveAll.putInt("gameViewState", state);
+                            while(!saveAll.commit()){ }
+                            mInterstitialAd.show();
+                        }else{
+                            advertisingCounter++;
+                            initthread = new initThread(this, state, readAll);
+                            initthread.start();
+                        }
+                        break;
                 }
             }
         }

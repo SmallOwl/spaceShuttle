@@ -40,6 +40,7 @@ public class gameLogic {
     private static Joystick joystick;
 
     private static boolean game;
+    private static boolean study;
     private static boolean shuttleDestroyed;
 
     private static Random r;
@@ -69,11 +70,14 @@ public class gameLogic {
 
     public static void render(){
         if(game){
+            long now = System.currentTimeMillis();
             addComet();
             renderComets();
-            renderShuttle();
+            renderShuttle(true);
             renderUI();
             checkCollision();
+        }else if(study){
+            renderShuttle(false);
         }
     }
 
@@ -86,11 +90,6 @@ public class gameLogic {
             newComet.setSpeedY(Constants.cometYMinimumSpeed*-1 + r.nextInt((int) (Constants.cometYMaximumSpeed - Constants.cometYMinimumSpeed))*-1);
             newComet.setAngle(r.nextInt(361) - 1);
             comets.add(newComet);
-            Log.d("comet","posX:\t" + newComet.getPosX());
-            Log.d("comet","posY:\t" + newComet.getPosY());
-            Log.d("comet","speedX:\t" + newComet.getSpeedX());
-            Log.d("comet","speedY:\t" + newComet.getSpeedY());
-            Log.d("comet","-------------------------------------");
         }
     }
     private static void renderComets() {
@@ -101,22 +100,11 @@ public class gameLogic {
                     checkComet.getPosX() < useCamera.getPosX() - Constants.smallWatchBlocksWidth*2 ||
                     checkComet.getPosY() > useCamera.getPosY() + Constants.smallWatchBlocksHeight*2 ||
                     checkComet.getPosY() < useCamera.getPosY() - Constants.smallWatchBlocksHeight*2){
-                Log.d("comet","REMOVE-------------------------------------");
-                Log.d("comet","posX:\t" + checkComet.getPosX());
-                Log.d("comet","posY:\t" + checkComet.getPosY());
-                Log.d("comet","speedX:\t" + checkComet.getSpeedX());
-                Log.d("comet","speedY:\t" + checkComet.getSpeedY());
-                Log.d("comet","-------------------------------------");
                 iterator.remove();
             }else{
                 checkComet.setSpeedY((float) (checkComet.getSpeedY() - (double)(checkComet.getWeight()*Constants.g)));
                 checkComet.setPosX(checkComet.getPosX() + checkComet.getSpeedX());
                 checkComet.setPosY(checkComet.getPosY() + checkComet.getSpeedY());
-                Log.d("comet","posX:\t" + checkComet.getPosX());
-                Log.d("comet","posY:\t" + checkComet.getPosY());
-                Log.d("comet","speedX:\t" + checkComet.getSpeedX());
-                Log.d("comet","speedY:\t" + checkComet.getSpeedY());
-                Log.d("comet","-------------------------------------");
             }
         }
     }
@@ -130,7 +118,7 @@ public class gameLogic {
             statistic.setValue((int) Math.abs(spaceShuttle.getPosX() - Constants.defaultShuttleX));
         }
     }
-    private static void renderShuttle() {
+    private static void renderShuttle(boolean dynamic) {
         spaceShuttle.setAngleNeed(joystick.getValueAngle());
         if(spaceShuttle.getAngleNeed() > spaceShuttle.getAngle()){
             spaceShuttle.setAngle(spaceShuttle.getAngle() + 1);
@@ -146,7 +134,9 @@ public class gameLogic {
         if(spaceShuttle.getEngine() != 0){
             spaceShuttle.setFuel(spaceShuttle.getFuel() - spaceShuttle.getFireLevel() - 1);
         }
-        dynamicShuttle();
+        if(dynamic){
+            dynamicShuttle();
+        }
     }
 
     private static void checkCollision() {
@@ -155,7 +145,7 @@ public class gameLogic {
                 game = false;
                 joystick.setVisible(false);
                 if(checkLanding()){
-                    menuText.setDrawText("Your shuttle destroyed");
+                    menuText.setDrawText(view.getResources().getString(R.string.shuttleDestroyed));
                     menuText.centerElement();
                     view.menuAfterGame();
                     return;
@@ -163,7 +153,6 @@ public class gameLogic {
                 return;
             }
         }
-
         Iterator iterator = comets.iterator();
         while(iterator.hasNext()){
             comet checkComet = (comet) iterator.next();
@@ -173,7 +162,7 @@ public class gameLogic {
                     checkComet.getPosY() < spaceShuttle.getPosY() + Constants.shuttleHeight/2){
                 game = false;
                 joystick.setVisible(false);
-                menuText.setDrawText("Your shuttle destroyed");
+                menuText.setDrawText(view.getResources().getString(R.string.shuttleDestroyed));
                 menuText.centerElement();
                 view.menuAfterGame();
             }
@@ -185,19 +174,19 @@ public class gameLogic {
                 if(spaceShuttle.getSpeedY() >= -0.3 && spaceShuttle.getSpeedY() <= 0.3 && spaceShuttle.getAngle() <= 5 && spaceShuttle.getAngle() >= -5){
                     statistic.setValue(Integer.valueOf(statistic.getValue()) * (5 -
                             (checkPlatform.getPlatformEnd() - checkPlatform.getPlatformStart() - Constants.minimumPlatformWidth)/((Constants.platformRange-Constants.minimumPlatformWidth)/5))*2);
-                    menuText.setDrawText("Perfect landing");
+                    menuText.setDrawText(view.getResources().getString(R.string.perfectLanding));
                     menuText.centerElement();
                     view.menuAfterGame();
                     return false;
                 }else if(spaceShuttle.getSpeedY() >= -0.6 && spaceShuttle.getSpeedY() <= 0.6 && spaceShuttle.getAngle() <= 10 && spaceShuttle.getAngle() >= -10){
                     statistic.setValue(Integer.valueOf(statistic.getValue()) * (5 - (checkPlatform.getPlatformEnd() - checkPlatform.getPlatformStart() - Constants.minimumPlatformWidth)/((Constants.platformRange-Constants.minimumPlatformWidth)/5)));
-                    menuText.setDrawText("You can better");
+                    menuText.setDrawText(view.getResources().getString(R.string.canBetter));
                     menuText.centerElement();
                     view.menuAfterGame();
                     return false;
                 }else{
                     statistic.setValue(0);
-                    menuText.setDrawText("Your shuttle destroyed");
+                    menuText.setDrawText(view.getResources().getString(R.string.shuttleDestroyed));
                     menuText.centerElement();
                     view.menuAfterGame();
                     return false;
@@ -220,8 +209,15 @@ public class gameLogic {
     public static boolean isGame() {
         return game;
     }
+    public static boolean isStudy() {
+        return study;
+    }
 
     public static void setGame(boolean game) {
         gameLogic.game = game;
+    }
+
+    public static void setStudy(boolean study) {
+        gameLogic.study = study;
     }
 }

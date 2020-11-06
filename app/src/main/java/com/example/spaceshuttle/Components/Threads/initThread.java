@@ -2,6 +2,7 @@ package com.example.spaceshuttle.Components.Threads;
 
 import android.content.SharedPreferences;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.Rect;
 
 import androidx.core.content.res.ResourcesCompat;
@@ -9,6 +10,8 @@ import androidx.core.content.res.ResourcesCompat;
 import com.example.spaceshuttle.Components.UI.Bar.Bar;
 import com.example.spaceshuttle.Components.UI.Bar.barParameters;
 import com.example.spaceshuttle.Components.UI.Bar.stepBar;
+import com.example.spaceshuttle.Components.UI.Hand.Hand;
+import com.example.spaceshuttle.Components.UI.Hand.handParameters;
 import com.example.spaceshuttle.Components.UI.Joystick.Joystick;
 import com.example.spaceshuttle.Components.UI.Joystick.joystickParameters;
 import com.example.spaceshuttle.Components.UI.SoundButton.buttonParameters;
@@ -18,6 +21,8 @@ import com.example.spaceshuttle.Components.UI.Text.textParameters;
 import com.example.spaceshuttle.Components.gameSurfaceView;
 import com.example.spaceshuttle.Constants;
 import com.example.spaceshuttle.GameObjects.Camera.camera;
+import com.example.spaceshuttle.GameObjects.Comet.comet;
+import com.example.spaceshuttle.GameObjects.FuelStation.fuelStation;
 import com.example.spaceshuttle.GameObjects.Land.generateLand;
 import com.example.spaceshuttle.GameObjects.Land.land;
 import com.example.spaceshuttle.GameObjects.Land.platform;
@@ -42,6 +47,9 @@ public class initThread extends Thread {
     private Text menuText;
     private Joystick joystick;
     private soundButton soundbutton;
+    private Text studyText;
+    private Hand hand;
+    private Hand secondHand;
 
     private land landMap;
     private shuttle spaceShuttle;
@@ -58,12 +66,22 @@ public class initThread extends Thread {
 
     @Override
     public void run() {
-        if(state == 5){
+        if(state == -1){
+            gameView.setState(1);
+            initUI();
+            initStudy();
+            initMap();
+            initShuttle();
+            calculateScaleCoeffs();
+            initCamera();
+            initComets();
+            initFuelStations();
+            gameView.study();
+        }else if(state == 5){
             gameView.setState(1);
             initMap();
             gameView.game();
-        }
-        else if(state == 3 || state == 4){
+        }else if(state == 3 || state == 4){
             initUI();
             restoreUI();
             restoreLand();
@@ -71,6 +89,7 @@ public class initThread extends Thread {
             restoreShuttle();
             calculateScaleCoeffs();
             initCamera();
+            initComets();
             restoreCamera();
             gameView.menu();
         }else{
@@ -80,6 +99,7 @@ public class initThread extends Thread {
             initShuttle();
             calculateScaleCoeffs();
             initCamera();
+            initComets();
             gameView.menu();
         }
     }
@@ -139,7 +159,6 @@ public class initThread extends Thread {
         useCamera.init();
     }
     private void initMap() {
-        long start = System.currentTimeMillis();
         generateLand.generateLandMap();
         landMap = new land();
         landMap.setLandPointers(generateLand.getLandPoints());
@@ -149,6 +168,18 @@ public class initThread extends Thread {
         spaceShuttle = new shuttle();
         spaceShuttle.init();
     }
+    private void initStudy() {
+        createStudyText();
+        createHand();
+        createSecondHand();
+    }
+    private void initComets() {
+        comet.initCometBitmap(Constants.scaleSmallCoef, Constants.scaleBigCoef);
+    }
+    private void initFuelStations() {
+        fuelStation.initFuelStationBitmap(Constants.scaleSmallCoef, Constants.scaleBigCoef);
+    }
+
 
     private void calculateScaleCoeffs() {
         Constants.scaleSmallCoef = (int) Math.ceil(gameView.getWidth()/Constants.smallWatchBlocksWidth);
@@ -299,7 +330,7 @@ public class initThread extends Thread {
         parameters.setLeft(0);
         parameters.setMargin(0, (int) (gameView.getHeight()*0.1), (int) (gameView.getWidth()*0.25), 0);
         parameters.setDefaultValue("000000");
-        parameters.setDefaultText("Score:");
+        parameters.setDefaultText(gameView.getResources().getString(R.string.score));
         parameters.setTextColor(Constants.textColor);
         parameters.setTextSize(getMaxFontSize(parameters));
         statistic = new Text(parameters);
@@ -313,7 +344,7 @@ public class initThread extends Thread {
         parameters.setLeft(0);
         parameters.setMargin(0, (int) (gameView.getHeight()*0.1), (int) (gameView.getWidth()*0.20), 0);
         parameters.setDefaultValue("000000");
-        parameters.setDefaultText("Best Score:");
+        parameters.setDefaultText(gameView.getResources().getString(R.string.bestScore));
         parameters.setTextColor(Constants.textColor);
         parameters.setTextSize(getMaxFontSize(parameters));
         bestScore = new Text(parameters);
@@ -328,7 +359,7 @@ public class initThread extends Thread {
         parameters.setLeft(0);
         parameters.setMargin(0, 0, (int) (gameView.getWidth()*0.15), (int) (gameView.getWidth()*0.15));
         parameters.setDefaultValue("");
-        parameters.setDefaultText("Tap anywhere to start");
+        parameters.setDefaultText(gameView.getResources().getString(R.string.toStart));
         parameters.setTextColor(Constants.textColor);
         parameters.setTextSize(getMaxFontSize(parameters));
         menuText = new Text(parameters);
@@ -354,7 +385,65 @@ public class initThread extends Thread {
         parameters.setLeft((int) (gameView.getWidth()*0.80));
         parameters.setMargin((int) (gameView.getHeight()*0.03), (int) (gameView.getHeight()*0.03), (int) (gameView.getWidth()*0.02), (int) (gameView.getWidth()*0.02));
         soundbutton = new soundButton(parameters, gameView.getContext());
-        soundbutton.setMusic(true);
+        soundbutton.setMusic(readAll.getBoolean("soundValue", true));
+    }
+    private void createStudyText() {
+        textParameters parameters = new textParameters();
+        parameters.setHeight((int) (gameView.getHeight()*0.2));
+        parameters.setWidth(gameView.getWidth());
+        parameters.setTop((int) (gameView.getHeight()*0.2));
+        parameters.setLeft(0);
+        parameters.setMargin(0, 0, (int) (gameView.getWidth()*0.15), (int) (gameView.getWidth()*0.15));
+        parameters.setDefaultValue("");
+        parameters.setDefaultText(gameView.getResources().getString(R.string.engineChange));
+        parameters.setTextColor(Constants.textColor);
+        parameters.setTextSize(getMaxFontSize(parameters));
+        studyText = new Text(parameters);
+    }
+    private void createHand() {
+        handParameters parameters = new handParameters();
+        parameters.setHeight((int) (gameView.getHeight()*0.10));
+        parameters.setWidth((int) (gameView.getWidth()*0.20));
+        parameters.setTop((int) (gameView.getHeight()*0.80));
+        parameters.setLeft((int) (gameView.getWidth()*0.40));
+        parameters.setMargin((int) (gameView.getHeight()*0.03), (int) (gameView.getHeight()*0.03), (int) (gameView.getWidth()*0.02), (int) (gameView.getWidth()*0.02));
+        Point newPoint = new Point();
+        newPoint.set((int) (gameView.getWidth()*0.40), (int) (gameView.getHeight()*0.80));
+        parameters.addTrajectory(newPoint);
+        newPoint = new Point();
+        newPoint.set((int) (gameView.getWidth()*0.40), (int) (gameView.getHeight()*0.80 - Constants.maxJoystickR));
+        parameters.addTrajectory(newPoint);
+        newPoint = new Point();
+        newPoint.set((int) (gameView.getWidth()*0.40), (int) (gameView.getHeight()*0.80 - Constants.maxJoystickR/2));
+        parameters.addTrajectory(newPoint);
+        hand = new Hand(parameters, gameView.getContext());
+    }
+    private void createSecondHand() {
+        handParameters parameters = new handParameters();
+        parameters.setHeight((int) (gameView.getHeight()*0.10));
+        parameters.setWidth((int) (gameView.getWidth()*0.20));
+        parameters.setTop((int) (gameView.getHeight()*0.80));
+        parameters.setLeft((int) (gameView.getWidth()*0.40));
+        parameters.setMargin((int) (gameView.getHeight()*0.03), (int) (gameView.getHeight()*0.03), (int) (gameView.getWidth()*0.02), (int) (gameView.getWidth()*0.02));
+        Point newPoint = new Point();
+        newPoint.set((int) (gameView.getWidth()*0.40), (int) (gameView.getHeight()*0.80));
+        parameters.addTrajectory(newPoint);
+        newPoint = new Point();
+        newPoint.set((int) (gameView.getWidth()*0.40 + Constants.maxJoystickR/2), (int) (gameView.getHeight()*0.80));
+        parameters.addTrajectory(newPoint);
+        newPoint = new Point();
+        newPoint.set((int) (gameView.getWidth()*0.40 + Constants.maxJoystickR/3), (int) (gameView.getHeight()*0.80 - Constants.maxJoystickR/4));
+        parameters.addTrajectory(newPoint);
+        newPoint = new Point();
+        newPoint.set((int) (gameView.getWidth()*0.40), (int) (gameView.getHeight()*0.80 - Constants.maxJoystickR/2));
+        parameters.addTrajectory(newPoint);
+        newPoint = new Point();
+        newPoint.set((int) (gameView.getWidth()*0.40 - Constants.maxJoystickR/3), (int) (gameView.getHeight()*0.80 - Constants.maxJoystickR/4));
+        parameters.addTrajectory(newPoint);
+        newPoint = new Point();
+        newPoint.set((int) (gameView.getWidth()*0.40 - Constants.maxJoystickR/2), (int) (gameView.getHeight()*0.80));
+        parameters.addTrajectory(newPoint);
+        secondHand = new Hand(parameters, gameView.getContext());
     }
 
     private textParameters createFuelTextParameters(){
@@ -365,7 +454,7 @@ public class initThread extends Thread {
         parameters.setLeft(gameView.getWidth()/2);
         parameters.setMargin((int) (gameView.getHeight()*0.005), (int) (gameView.getHeight()*0.01),0,0);
         parameters.setDefaultValue("");
-        parameters.setDefaultText("Fuel");
+        parameters.setDefaultText(gameView.getResources().getString(R.string.fuel));
         parameters.setTextColor(Constants.textColor);
         return parameters;
     }
@@ -377,7 +466,7 @@ public class initThread extends Thread {
         parameters.setLeft(gameView.getWidth()/2);
         parameters.setMargin((int) (gameView.getHeight()*0.005), (int) (gameView.getHeight()*0.01),0,0);
         parameters.setDefaultValue("");
-        parameters.setDefaultText("Engine");
+        parameters.setDefaultText(gameView.getResources().getString(R.string.engine));
         parameters.setTextColor(Constants.textColor);
         return parameters;
     }
@@ -389,7 +478,7 @@ public class initThread extends Thread {
         parameters.setLeft(0);
         parameters.setMargin((int) (gameView.getHeight()*0.005), (int) (gameView.getHeight()*0.03),0,0);
         parameters.setDefaultValue("");
-        parameters.setDefaultText("Angle");
+        parameters.setDefaultText(gameView.getResources().getString(R.string.angle));
         parameters.setTextColor(Constants.textColor);
         return parameters;
     }
@@ -424,6 +513,11 @@ public class initThread extends Thread {
     public soundButton getSoundbutton() {
         return soundbutton;
     }
+    public Text getStudyText() {
+        return studyText;
+    }
+    public Hand getHand() { return hand; }
+    public Hand getSecondHand() { return secondHand; }
 
     public land getLandMap() { return landMap; }
     public shuttle getSpaceShuttle() { return spaceShuttle; }

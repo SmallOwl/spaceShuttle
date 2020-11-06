@@ -39,6 +39,9 @@ public class gameAdapter extends Activity {
         if(button != null){
             button.resumeMusic();
         }
+        if(gameView.getSoundbutton() != null){
+            gameView.getSoundbutton().setMusic(readAll.getBoolean("soundValue", true));
+        }
         super.onResume();
     }
     @Override
@@ -49,11 +52,13 @@ public class gameAdapter extends Activity {
         if(gameView.getState() == 5){
             gameView.setState(0);
         }
+        if(gameView.getSoundbutton() != null){
+            saveAll.putBoolean("soundValue", gameView.getSoundbutton().isMusic());
+        }
         saveAll.putInt("gameViewState", gameView.getState());
         while(!saveAll.commit()){ }
-        soundButton button = gameView.getSoundbutton();
-        if(button != null){
-            button.pauseMusic();
+        if(gameView.getSoundbutton() != null){
+            gameView.getSoundbutton().pauseMusic();
         }
         super.onPause();
     }

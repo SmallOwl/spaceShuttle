@@ -1,8 +1,7 @@
 package com.example.spaceshuttle.GameObjects.Land;
 
-import android.util.Log;
-
 import com.example.spaceshuttle.Constants;
+import com.example.spaceshuttle.GameObjects.FuelStation.fuelStation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +15,7 @@ public class generateLand {
 
     private static int[] landPoints;
     private static List<platform> platforms;
+    private static List<fuelStation> stations;
 
     private static Random r;
 
@@ -35,6 +35,14 @@ public class generateLand {
             landPoints[landPoints.length - 1] = r.nextInt(Constants.landHeight);
         }
         divideLand(0,landPoints.length - 1);
+//        for (platform checkPlatform: platforms) {
+//            if(r.nextInt(1000) < Constants.fuelStationChance){
+//                fuelStation newStation = new fuelStation();
+//                newStation.setX(checkPlatform.getPlatformStart() + Constants.fuelStationWidth/2 + r.nextInt(checkPlatform.getPlatformEnd() - checkPlatform.getPlatformStart() - Constants.fuelStationWidth));
+//                newStation.setY(checkPlatform.getPlatformValue());
+//                stations.add(newStation);
+//            }
+//        }
     }
 
     private static void divideLand(int left, int right){
@@ -137,6 +145,9 @@ public class generateLand {
 
     public static List<platform> getPlatforms() {
         return platforms;
+    }
+    public static List<fuelStation> getStations() {
+        return stations;
     }
 
     public static int[] getLandPoints() {

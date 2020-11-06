@@ -52,40 +52,35 @@ public class camera {
             dynamicCamera(Constants.bigWatchBlocksWidth, Constants.bigWatchBlocksHeight);
             drawLand(canvas, Constants.bigWatchBlocksWidth, Constants.bigWatchBlocksHeight, Constants.scaleBigCoef);
             drawShuttle(canvas, Constants.bigWatchBlocksWidth, Constants.bigWatchBlocksHeight, Constants.scaleBigCoef);
-            drawComets(canvas, Constants.bigWatchBlocksWidth, Constants.bigWatchBlocksHeight, Constants.scaleBigCoef);
+            drawComets(canvas, Constants.bigWatchBlocksWidth, Constants.bigWatchBlocksHeight, Constants.scaleBigCoef, true);
         }else {
             dynamicCamera(Constants.smallWatchBlocksWidth, Constants.smallWatchBlocksHeight);
             drawLand(canvas, Constants.smallWatchBlocksWidth, Constants.smallWatchBlocksHeight, Constants.scaleSmallCoef);
             drawShuttle(canvas, Constants.smallWatchBlocksWidth, Constants.smallWatchBlocksHeight, Constants.scaleSmallCoef);
-            drawComets(canvas, Constants.smallWatchBlocksWidth, Constants.smallWatchBlocksHeight, Constants.scaleSmallCoef);
+            drawComets(canvas, Constants.smallWatchBlocksWidth, Constants.smallWatchBlocksHeight, Constants.scaleSmallCoef, false);
         }
 
         Paint p = new Paint();
         p.setColor(Color.GREEN);
     }
 
-    private void drawComets(Canvas canvas, int watchBlockWidth, int watchBlockHeight, int scaleCoef) {
+    private void drawComets(Canvas canvas, int watchBlockWidth, int watchBlockHeight, int scaleCoef, boolean scale) {
         p.setStrokeWidth(1);
         p.setStyle(Paint.Style.FILL);
         for(comet drawComet: comets){
             canvas.rotate(drawComet.getAngle(),
                     display.left + (drawComet.getPosX() - (this.posX - watchBlockWidth/2))*scaleCoef,
                     display.top + (posY + watchBlockHeight/2 - drawComet.getPosY())*scaleCoef);
-            float top = display.top + (posY + watchBlockHeight/2 - drawComet.getPosY() - Constants.cometHeight/2)*scaleCoef;
-            for(int i = 0; i < Constants.cometHeight; i ++){
-                float left = display.left + (drawComet.getPosX() - Constants.cometWidth/2 - (this.posX - watchBlockWidth/2))*scaleCoef;
-                for(int j = 0; j < Constants.cometWidth; j ++){
-                    if(drawComet.getCometMatrix()[i][j] == 1){
-                        p.setColor(Constants.cometDarkColor);
-                    }else if(drawComet.getCometMatrix()[i][j] == 2){
-                        p.setColor(Constants.cometLightColor);
-                    }else{
-                        p.setColor(Color.TRANSPARENT);
-                    }
-                    canvas.drawRect( left, top, left + scaleCoef, top + scaleCoef,p);
-                    left = left + scaleCoef;
-                }
-                top = top + scaleCoef;
+            if(scale){
+                canvas.drawBitmap(comet.getBigComet(),
+                        display.left + (drawComet.getPosX() - Constants.cometWidth/2 - (this.posX - watchBlockWidth/2))*scaleCoef,
+                        display.top + (posY + watchBlockHeight/2 - drawComet.getPosY() - Constants.cometHeight/2)*scaleCoef,
+                        null);
+            }else{
+                canvas.drawBitmap(comet.getSmallComet(),
+                        display.left + (drawComet.getPosX() - Constants.cometWidth/2 - (this.posX - watchBlockWidth/2))*scaleCoef,
+                        display.top + (posY + watchBlockHeight/2 - drawComet.getPosY() - Constants.cometHeight/2)*scaleCoef,
+                        null);
             }
             canvas.rotate(-drawComet.getAngle(),
                     display.left + (drawComet.getPosX() - (this.posX - watchBlockWidth/2))*scaleCoef,

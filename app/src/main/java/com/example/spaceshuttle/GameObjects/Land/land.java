@@ -1,8 +1,6 @@
 package com.example.spaceshuttle.GameObjects.Land;
 
-import android.graphics.Canvas;
-
-import com.example.spaceshuttle.GameObjects.gameObject;
+import com.example.spaceshuttle.GameObjects.FuelStation.fuelStation;
 
 import java.util.List;
 
@@ -10,6 +8,7 @@ public class land {
 
     private int[] landPointers;
     private List<platform> platforms;
+    private List<fuelStation> stations;
 
     public int[] getLandPointers() {
         return landPointers;
@@ -27,4 +26,11 @@ public class land {
         this.platforms = platforms;
     }
 
+    public List<fuelStation> getStations() {
+        return stations;
+    }
+
+    public void setStations(List<fuelStation> stations) {
+        this.stations = stations;
+    }
 }

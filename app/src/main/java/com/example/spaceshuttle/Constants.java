@@ -20,6 +20,10 @@ public class Constants {
     public final static int cometDarkColor = Color.argb(255,100,100,100);
     public final static int soundButtonLightColor = Color.argb(255,200,200,200);
     public final static int soundButtonDarkColor = Color.argb(255,100,100,100);
+    public final static int handLightColor = Color.argb(255,200,200,200);
+    public final static int handDarkColor = Color.argb(255,100,100,100);
+    public final static int fuelStationLightColor = Color.argb(255,200,200,200);
+    public final static int fuelStationDarkColor = Color.argb(255,100,100,100);
 
     public static Typeface fontUse;
 
@@ -29,7 +33,11 @@ public class Constants {
     public final static int platformRange = 256;
     public final static int minimumPlatformWidth = 17;
 
-    public final static float cometChance = 20;
+    public final static int fuelStationWidth = 17;
+    public final static int fuelStationHeight = 17;
+    public final static float fuelStationChance = 30;
+
+    public final static float cometChance = 30;
     public final static float cometYMinimumSpeed = 2;
     public final static float cometYMaximumSpeed = 5;
     public final static float cometXSpeed = 2;
@@ -74,5 +82,5 @@ public class Constants {
 
     public static int defaultCameraX = landWidth/2;
     public static int defaultCameraY = smallWatchBlocksHeight/2;
-    public final static int advertisingCounter = 5;
+    public final static int advertisingCounter = 2;
 }
