@@ -8,6 +8,7 @@ import android.graphics.Rect;
 
 import com.example.spaceshuttle.Constants;
 import com.example.spaceshuttle.GameObjects.Comet.comet;
+import com.example.spaceshuttle.GameObjects.FuelStation.fuelStation;
 import com.example.spaceshuttle.GameObjects.Land.land;
 import com.example.spaceshuttle.GameObjects.Land.platform;
 import com.example.spaceshuttle.GameObjects.Shuttle.shuttle;
@@ -50,12 +51,12 @@ public class camera {
         checkScale();
         if(sizeScale) {
             dynamicCamera(Constants.bigWatchBlocksWidth, Constants.bigWatchBlocksHeight);
-            drawLand(canvas, Constants.bigWatchBlocksWidth, Constants.bigWatchBlocksHeight, Constants.scaleBigCoef);
+            drawLand(canvas, Constants.bigWatchBlocksWidth, Constants.bigWatchBlocksHeight, Constants.scaleBigCoef, true);
             drawShuttle(canvas, Constants.bigWatchBlocksWidth, Constants.bigWatchBlocksHeight, Constants.scaleBigCoef);
             drawComets(canvas, Constants.bigWatchBlocksWidth, Constants.bigWatchBlocksHeight, Constants.scaleBigCoef, true);
         }else {
             dynamicCamera(Constants.smallWatchBlocksWidth, Constants.smallWatchBlocksHeight);
-            drawLand(canvas, Constants.smallWatchBlocksWidth, Constants.smallWatchBlocksHeight, Constants.scaleSmallCoef);
+            drawLand(canvas, Constants.smallWatchBlocksWidth, Constants.smallWatchBlocksHeight, Constants.scaleSmallCoef, false);
             drawShuttle(canvas, Constants.smallWatchBlocksWidth, Constants.smallWatchBlocksHeight, Constants.scaleSmallCoef);
             drawComets(canvas, Constants.smallWatchBlocksWidth, Constants.smallWatchBlocksHeight, Constants.scaleSmallCoef, false);
         }
@@ -99,7 +100,7 @@ public class camera {
         setSizeScale(false);
     }
 
-    private void drawLand(Canvas canvas, int watchBlockWidth, int watchBlockHeight, int scaleCoef) {
+    private void drawLand(Canvas canvas, int watchBlockWidth, int watchBlockHeight, int scaleCoef, boolean scale) {
         Path landPath = new Path();
         p.setColor(Color.GREEN);
         p.setStyle(Paint.Style.STROKE);
@@ -123,14 +124,28 @@ public class camera {
         for(platform checkPlatform : landMap.getPlatforms()){
             if((checkPlatform.getPlatformStart() > this.posX - watchBlockWidth/2 && checkPlatform.getPlatformStart() < this.posX + watchBlockWidth/2) ||
                     (checkPlatform.getPlatformEnd() > this.posX - watchBlockWidth/2 && checkPlatform.getPlatformEnd() < this.posX + watchBlockWidth/2)){
-                String coef = 5 - (checkPlatform.getPlatformEnd() - checkPlatform.getPlatformStart() - Constants.minimumPlatformWidth)/((Constants.platformRange-Constants.minimumPlatformWidth)/5) + "x";
-                if(coef == "0x"){
-                    coef = "x";
-                }
-                canvas.drawText(coef,
+                if(checkPlatform.isStation()){
+                    if(scale){
+                        canvas.drawBitmap(fuelStation.getBmpBigDraw(),
+                                display.left + ((checkPlatform.getPlatformStart() + (checkPlatform.getPlatformEnd() - checkPlatform.getPlatformStart())/2) - Constants.cometWidth/2 - (this.posX - watchBlockWidth/2))*scaleCoef,
+                                display.top + (posY + watchBlockHeight/2 - (checkPlatform.getPlatformValue() + Constants.fuelStationHeight)- Constants.cometHeight/2)*scaleCoef,
+                                null);
+                    }else{
+                        canvas.drawBitmap(fuelStation.getBmpSmallDraw(),
+                                display.left + ((checkPlatform.getPlatformStart() + (checkPlatform.getPlatformEnd() - checkPlatform.getPlatformStart())/2) - Constants.cometWidth/2 - (this.posX - watchBlockWidth/2))*scaleCoef,
+                                display.top + (posY + watchBlockHeight/2 - (checkPlatform.getPlatformValue() + Constants.fuelStationHeight)- Constants.cometHeight/2)*scaleCoef,
+                                null);
+                    }
+                }else{
+                    String coef = 5 - (checkPlatform.getPlatformEnd() - checkPlatform.getPlatformStart() - Constants.minimumPlatformWidth)/((Constants.platformRange-Constants.minimumPlatformWidth)/5) + "x";
+                    if(coef == "0x"){
+                        coef = "x";
+                    }
+                    canvas.drawText(coef,
                             display.left + (checkPlatform.getPlatformStart() - (this.posX - watchBlockWidth/2))*scaleCoef + ((checkPlatform.getPlatformEnd() - checkPlatform.getPlatformStart())*scaleCoef - bound.width())/2,
                             display.top + ((this.posY + watchBlockHeight/2) - checkPlatform.getPlatformValue())*scaleCoef + bound.height() + p.getTextSize(),
                             p);
+                }
             }
         }
     }

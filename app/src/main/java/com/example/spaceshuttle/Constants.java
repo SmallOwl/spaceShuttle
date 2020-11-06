@@ -35,7 +35,7 @@ public class Constants {
 
     public final static int fuelStationWidth = 17;
     public final static int fuelStationHeight = 17;
-    public final static float fuelStationChance = 30;
+    public final static float fuelStationChance = 100;
 
     public final static float cometChance = 30;
     public final static float cometYMinimumSpeed = 2;

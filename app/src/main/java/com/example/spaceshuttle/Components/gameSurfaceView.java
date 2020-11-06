@@ -195,7 +195,7 @@ public class gameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
             gamethread = new gameThread(this,getHolder(),gameElements,useCamera);
             gamethread.setRunning(true);
             gamethread.start();
-        }else if(state == 9){
+        }else if(state == 10){
             state = 3;
             Log.d("study", "Start:\t" + state);
             gameLogic.setStudy(false);

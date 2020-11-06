@@ -22,11 +22,11 @@ import com.example.spaceshuttle.Components.gameSurfaceView;
 import com.example.spaceshuttle.Constants;
 import com.example.spaceshuttle.GameObjects.Camera.camera;
 import com.example.spaceshuttle.GameObjects.Comet.comet;
-import com.example.spaceshuttle.GameObjects.FuelStation.fuelStation;
 import com.example.spaceshuttle.GameObjects.Land.generateLand;
 import com.example.spaceshuttle.GameObjects.Land.land;
 import com.example.spaceshuttle.GameObjects.Land.platform;
 import com.example.spaceshuttle.GameObjects.Shuttle.shuttle;
+import com.example.spaceshuttle.GameObjects.FuelStation.fuelStation;
 import com.example.spaceshuttle.R;
 
 import java.util.ArrayList;

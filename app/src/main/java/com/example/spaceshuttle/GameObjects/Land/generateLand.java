@@ -35,14 +35,6 @@ public class generateLand {
             landPoints[landPoints.length - 1] = r.nextInt(Constants.landHeight);
         }
         divideLand(0,landPoints.length - 1);
-//        for (platform checkPlatform: platforms) {
-//            if(r.nextInt(1000) < Constants.fuelStationChance){
-//                fuelStation newStation = new fuelStation();
-//                newStation.setX(checkPlatform.getPlatformStart() + Constants.fuelStationWidth/2 + r.nextInt(checkPlatform.getPlatformEnd() - checkPlatform.getPlatformStart() - Constants.fuelStationWidth));
-//                newStation.setY(checkPlatform.getPlatformValue());
-//                stations.add(newStation);
-//            }
-//        }
     }
 
     private static void divideLand(int left, int right){
@@ -80,6 +72,8 @@ public class generateLand {
                 newPlatform.setPlatformStart(platformStart);
                 newPlatform.setPlatformEnd(platformEnd);
                 newPlatform.setPlatformValue(platformValue);
+//                newPlatform.setStation(r.nextInt(100) < Constants.fuelStationChance);
+                newPlatform.setStation(false);
                 platforms.add(newPlatform);
                 landPoints[platformStart] = platformValue;
                 landPoints[platformEnd] = platformValue;

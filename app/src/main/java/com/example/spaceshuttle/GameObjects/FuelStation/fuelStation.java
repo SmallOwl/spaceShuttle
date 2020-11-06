@@ -29,9 +29,6 @@ public class fuelStation {
             {0,0,0,1,0,1,1,1,1,1,1,0,0,0,0,0,0},
     };
 
-    private int x;
-    private int y;
-
     private static Bitmap bmpBigDraw;
     private static Bitmap bmpSmallDraw;
 
@@ -45,9 +42,9 @@ public class fuelStation {
         Canvas canvasBig = new Canvas(bmpBigDraw);
         for(int i = 0; i < Constants.fuelStationHeight; i ++){
             for(int j = 0; j < Constants.fuelStationWidth; j ++){
-                if(fuelStationMatrix[i][j] == 1){
+                if(fuelStationMatrix[j][i] == 1){
                     p.setColor(Constants.fuelStationDarkColor);
-                }else if(fuelStationMatrix[i][j] == 2){
+                }else if(fuelStationMatrix[j][i] == 2){
                     p.setColor(Constants.fuelStationLightColor);
                 }else{
                     p.setColor(Color.TRANSPARENT);
@@ -70,19 +67,4 @@ public class fuelStation {
         return fuelStationMatrix;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
 }

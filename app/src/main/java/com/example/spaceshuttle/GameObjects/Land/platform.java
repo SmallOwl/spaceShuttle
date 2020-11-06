@@ -5,6 +5,7 @@ public class platform {
     private int platformStart;
     private int platformEnd;
     private int platformValue;
+    private boolean station;
 
     public int getPlatformStart() {
         return platformStart;
@@ -28,5 +29,13 @@ public class platform {
 
     public void setPlatformValue(int platformValue) {
         this.platformValue = platformValue;
+    }
+
+    public boolean isStation() {
+        return station;
+    }
+
+    public void setStation(boolean station) {
+        this.station = station;
     }
 }
