@@ -8,8 +8,10 @@
     <string name="toStart">Tap anywhere to start</string>
     <string name="angleChange">Angle Change</string>
     <string name="engineChange">Engine Change</string>
-    <string name="task">Try to fly as far as you can and land successfully</string>
+    <string name="task">Try to fly as far as you can</string>
     <string name="shuttleDestroyed">Spaceship is destroyed</string>
     <string name="canBetter">Good Landing</string>
     <string name="perfectLanding">Perfect Landing</string>
+    <string name="firstHelpTask">and land successfully</string>
+    <string name="secondHelpTask">" "</string>
 </resources>

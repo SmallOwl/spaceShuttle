@@ -75,13 +75,7 @@ public class gameThread extends Thread {
 
     private void logFPS() {
         if(System.currentTimeMillis() - lastFrameTime > 1000){
-            Log.d("FPS:\t", String.valueOf(framesPS));
-            if(framesPS > 0 && framesPS < 50){
-                Log.d("timer", "End checking");
-                System.exit(0);
-            }
             framesPS = 0;
-            Log.d("timer", "Start checking");
             lastFrameTime = System.currentTimeMillis();
         }
     }

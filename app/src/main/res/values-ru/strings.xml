@@ -9,8 +9,10 @@
     <string name="toStart">Нажмите, чтобы начать</string>
     <string name="angleChange">Изменение угла</string>
     <string name="engineChange">Изменение мощности</string>
-    <string name="task">Попробуй пролететь так далеко, как сможешь и успешно приземлится</string>
+    <string name="task">Попробуй пролететь так далеко</string>
     <string name="shuttleDestroyed">Корабль уничтожен</string>
     <string name="canBetter">Хорошее приземление</string>
     <string name="perfectLanding">Идеальное приземление</string>
+    <string name="secondHelpTask">и успешно приземлится</string>
+    <string name="firstHelpTask">" , как сможешь"</string>
 </resources>

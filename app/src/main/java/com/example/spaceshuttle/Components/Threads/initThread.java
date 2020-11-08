@@ -48,6 +48,8 @@ public class initThread extends Thread {
     private Joystick joystick;
     private soundButton soundbutton;
     private Text studyText;
+    private Text firstHelpStudyText;
+    private Text secondHelpStudyText;
     private Hand hand;
     private Hand secondHand;
 
@@ -399,6 +401,28 @@ public class initThread extends Thread {
         parameters.setTextColor(Constants.textColor);
         parameters.setTextSize(getMaxFontSize(parameters));
         studyText = new Text(parameters);
+        textParameters firstHelpParameters = new textParameters();
+        firstHelpParameters.setHeight((int) (gameView.getHeight()*0.2));
+        firstHelpParameters.setWidth(gameView.getWidth());
+        firstHelpParameters.setTop((int) (gameView.getHeight()*0.3));
+        firstHelpParameters.setLeft(0);
+        firstHelpParameters.setMargin(0, 0, (int) (gameView.getWidth()*0.15), (int) (gameView.getWidth()*0.15));
+        firstHelpParameters.setDefaultValue("");
+        firstHelpParameters.setDefaultText(gameView.getResources().getString(R.string.engineChange));
+        firstHelpParameters.setTextColor(Constants.textColor);
+        firstHelpParameters.setTextSize(getMaxFontSize(parameters));
+        firstHelpStudyText = new Text(firstHelpParameters);
+        textParameters secondHelpParameters = new textParameters();
+        secondHelpParameters.setHeight((int) (gameView.getHeight()*0.2));
+        secondHelpParameters.setWidth(gameView.getWidth());
+        secondHelpParameters.setTop((int) (gameView.getHeight()*0.4));
+        secondHelpParameters.setLeft(0);
+        secondHelpParameters.setMargin(0, 0, (int) (gameView.getWidth()*0.15), (int) (gameView.getWidth()*0.15));
+        secondHelpParameters.setDefaultValue("");
+        secondHelpParameters.setDefaultText(gameView.getResources().getString(R.string.engineChange));
+        secondHelpParameters.setTextColor(Constants.textColor);
+        secondHelpParameters.setTextSize(getMaxFontSize(parameters));
+        secondHelpStudyText = new Text(secondHelpParameters);
     }
     private void createHand() {
         handParameters parameters = new handParameters();
@@ -429,19 +453,30 @@ public class initThread extends Thread {
         newPoint.set((int) (gameView.getWidth()*0.40), (int) (gameView.getHeight()*0.80));
         parameters.addTrajectory(newPoint);
         newPoint = new Point();
-        newPoint.set((int) (gameView.getWidth()*0.40 + Constants.maxJoystickR/2), (int) (gameView.getHeight()*0.80));
+        newPoint.set((int) (gameView.getWidth()*0.40 + Constants.maxJoystickR), (int) (gameView.getHeight()*0.80));
         parameters.addTrajectory(newPoint);
         newPoint = new Point();
-        newPoint.set((int) (gameView.getWidth()*0.40 + Constants.maxJoystickR/3), (int) (gameView.getHeight()*0.80 - Constants.maxJoystickR/4));
+        newPoint.set((int) (gameView.getWidth()*0.40 + Constants.maxJoystickR*Math.sqrt(3)/2), (int) (gameView.getHeight()*0.80  - Constants.maxJoystickR/2));
         parameters.addTrajectory(newPoint);
         newPoint = new Point();
-        newPoint.set((int) (gameView.getWidth()*0.40), (int) (gameView.getHeight()*0.80 - Constants.maxJoystickR/2));
+        newPoint.set((int) (gameView.getWidth()*0.40 + Constants.maxJoystickR*Math.sqrt(2)/2), (int) (gameView.getHeight()*0.80 - Constants.maxJoystickR*Math.sqrt(2)/2));
         parameters.addTrajectory(newPoint);
         newPoint = new Point();
-        newPoint.set((int) (gameView.getWidth()*0.40 - Constants.maxJoystickR/3), (int) (gameView.getHeight()*0.80 - Constants.maxJoystickR/4));
+        newPoint.set((int) (gameView.getWidth()*0.40 + Constants.maxJoystickR/2), (int) (gameView.getHeight()*0.80 - Constants.maxJoystickR*Math.sqrt(3)/2));
+        parameters.addTrajectory(newPoint);
+
+        newPoint = new Point();
+        newPoint.set((int) (gameView.getWidth()*0.40), (int) (gameView.getHeight()*0.80 - Constants.maxJoystickR));
+        parameters.addTrajectory(newPoint);
+
+        newPoint = new Point();
+        newPoint.set((int) (gameView.getWidth()*0.40 - Constants.maxJoystickR/2), (int) (gameView.getHeight()*0.80 - Constants.maxJoystickR*Math.sqrt(3)/2));
         parameters.addTrajectory(newPoint);
         newPoint = new Point();
-        newPoint.set((int) (gameView.getWidth()*0.40 - Constants.maxJoystickR/2), (int) (gameView.getHeight()*0.80));
+        newPoint.set((int) (gameView.getWidth()*0.40 - Constants.maxJoystickR*Math.sqrt(2)/2), (int) (gameView.getHeight()*0.80 - Constants.maxJoystickR*Math.sqrt(2)/2));
+        parameters.addTrajectory(newPoint);
+        newPoint = new Point();
+        newPoint.set((int) (gameView.getWidth()*0.40 - Constants.maxJoystickR*Math.sqrt(3)/2), (int) (gameView.getHeight()*0.80 - Constants.maxJoystickR/2));
         parameters.addTrajectory(newPoint);
         secondHand = new Hand(parameters, gameView.getContext());
     }
@@ -527,4 +562,10 @@ public class initThread extends Thread {
         return bestScore;
     }
 
+    public Text getFirstHelpStudyText() {
+        return firstHelpStudyText;
+    }
+    public Text getSecondHelpStudyText() {
+        return secondHelpStudyText;
+    }
 }

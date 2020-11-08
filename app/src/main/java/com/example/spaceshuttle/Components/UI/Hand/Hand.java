@@ -19,8 +19,8 @@ public class Hand implements Element {
 
     private Paint p;
     private int scaleCoef;
-    private int xStep;
-    private int yStep;
+    private float xStep;
+    private float yStep;
     private Point lastTrajectory;
     private Point newTrajectory;
 
@@ -108,30 +108,28 @@ public class Hand implements Element {
                     parameters.setHeight(lastTrajectory.x);
                 }
                 newTrajectory = parameters.getTrajectory().get(newTrajectoryIndex);
-                xStep = (newTrajectory.x - lastTrajectory.x)/(handWidth*3);
-                yStep = (newTrajectory.y - lastTrajectory.y)/(handHeight*3);
-                if(xStep == 0 && (newTrajectory.x - lastTrajectory.x) != 0){
-                    if(newTrajectory.x > lastTrajectory.x){
-                        xStep = 1;
-                    }else{
-                        xStep = -1;
-                    }
+                xStep = (float)(newTrajectory.x - lastTrajectory.x)/(handWidth*3);
+                yStep = (float)(newTrajectory.y - lastTrajectory.y)/(handHeight*3);
+                if(xStep < 0 && xStep > -1){
+                    xStep = -1;
+                }else if(xStep > 0 && xStep < 1){
+                    xStep = 1;
                 }
-                if(yStep == 0 && (newTrajectory.y - lastTrajectory.y) != 0){
-                    if(newTrajectory.y > lastTrajectory.y){
-                        yStep = 1;
-                    }else{
-                        yStep = -1;
-                    }
+                if(yStep < 0 && yStep > -1){
+                    yStep = -1;
+                }else if(yStep > 0 && yStep < 1){
+                    yStep = 1;
                 }
+                Log.d("staps","lastTrajectory_x:\t" + lastTrajectory.x);
+                Log.d("staps","lastTrajectory_y:\t" + lastTrajectory.y);
                 Log.d("staps","newTrajectory_x:\t" + newTrajectory.x);
                 Log.d("staps","newTrajectory_y:\t" + newTrajectory.y);
                 Log.d("staps","step_x:\t" + xStep);
                 Log.d("staps","step_y:\t" + yStep);
                 Log.d("staps","-------------------------------------------");
             }else{
-                parameters.setTop(parameters.getTop() + yStep);
-                parameters.setLeft(parameters.getLeft() + xStep);
+                parameters.setTop((int) (parameters.getTop() + yStep));
+                parameters.setLeft((int) (parameters.getLeft() + xStep));
             }
         }
     }

@@ -54,6 +54,8 @@ public class gameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     private Joystick joystick;
     private soundButton soundbutton;
     private Text studyText;
+    private Text firstHelpStudyText;
+    private Text secondHelpStudyText;
     private Hand hand;
     private Hand secondHand;
 
@@ -195,7 +197,7 @@ public class gameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
             gamethread = new gameThread(this,getHolder(),gameElements,useCamera);
             gamethread.setRunning(true);
             gamethread.start();
-        }else if(state == 10){
+        }else if(state == 9){
             state = 3;
             Log.d("study", "Start:\t" + state);
             gameLogic.setStudy(false);
@@ -256,13 +258,23 @@ public class gameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
             gameElements.add(secondHand);
             state = 9;
         }else if(state == 9){
-            studyText.setDrawText(getResources().getString(R.string.task));
-            studyText.centerElement();
+//            gameElements.add(firstHelpStudyText);
+//            gameElements.add(secondHelpStudyText);
+//            studyText.setDrawText(getResources().getString(R.string.task));
+//            studyText.centerElement();
+//            firstHelpStudyText.setDrawText(getResources().getString(R.string.firstHelpTask));
+//            firstHelpStudyText.centerElement();
+//            secondHelpStudyText.setDrawText(getResources().getString(R.string.secondHelpTask));
+//            secondHelpStudyText.centerElement();
+            gameElements.remove(studyText);
             gameElements.remove(secondHand);
-            state = 10;
+            menu();
+//            state = 10;
         }else{
             Log.d("study", "End:\t" + state);
             gameElements.remove(studyText);
+            gameElements.remove(firstHelpStudyText);
+            gameElements.remove(secondHelpStudyText);
             menu();
         }
     }
@@ -301,6 +313,8 @@ public class gameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
         useCamera = initthread.getUseCamera();
         soundbutton = initthread.getSoundbutton();
         studyText = initthread.getStudyText();
+        firstHelpStudyText = initthread.getFirstHelpStudyText();
+        secondHelpStudyText = initthread.getSecondHelpStudyText();
         hand = initthread.getHand();
         secondHand = initthread.getSecondHand();
         loadToListsElements(gameElements);
