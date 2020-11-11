@@ -170,15 +170,18 @@ public class gameLogic {
     }
     private static boolean checkLanding(){
         for(platform checkPlatform : landMap.getPlatforms()){
-            if(spaceShuttle.getPosX() - Constants.shuttleWidth/2 >= checkPlatform.getPlatformStart() - 3 && spaceShuttle.getPosX() + Constants.shuttleWidth/2 < checkPlatform.getPlatformEnd() + 3){
-                if(spaceShuttle.getSpeedY() >= -0.3 && spaceShuttle.getSpeedY() <= 0.3 && spaceShuttle.getAngle() <= 5 && spaceShuttle.getAngle() >= -5){
+            if(spaceShuttle.getPosX() - Constants.shuttleWidth/2 >= checkPlatform.getPlatformStart() - Constants.maxLangRange
+                    && spaceShuttle.getPosX() + Constants.shuttleWidth/2 < checkPlatform.getPlatformEnd() + Constants.maxLangRange){
+                if(spaceShuttle.getSpeedY() >= (float)(-1*Constants.maxPerfectLandSpeed) && spaceShuttle.getSpeedY() <= Constants.maxPerfectLandSpeed
+                        && spaceShuttle.getAngle() <= Constants.maxPerfectLandAngle && spaceShuttle.getAngle() >= (float)(-1*Constants.maxPerfectLandAngle)){
                     statistic.setValue(Integer.valueOf(statistic.getValue()) * (5 -
                             (checkPlatform.getPlatformEnd() - checkPlatform.getPlatformStart() - Constants.minimumPlatformWidth)/((Constants.platformRange-Constants.minimumPlatformWidth)/5))*2);
                     menuText.setDrawText(view.getResources().getString(R.string.perfectLanding));
                     menuText.centerElement();
                     view.menuAfterGame();
                     return false;
-                }else if(spaceShuttle.getSpeedY() >= -0.6 && spaceShuttle.getSpeedY() <= 0.6 && spaceShuttle.getAngle() <= 10 && spaceShuttle.getAngle() >= -10){
+                }else if(spaceShuttle.getSpeedY() >= (float)(-1*Constants.maxLandSpeed) && spaceShuttle.getSpeedY() <= Constants.maxLandSpeed
+                        && spaceShuttle.getAngle() <= Constants.maxLandAngle && spaceShuttle.getAngle() >= (float)(-1*Constants.maxLandAngle)){
                     statistic.setValue(Integer.valueOf(statistic.getValue()) * (5 - (checkPlatform.getPlatformEnd() - checkPlatform.getPlatformStart() - Constants.minimumPlatformWidth)/((Constants.platformRange-Constants.minimumPlatformWidth)/5)));
                     menuText.setDrawText(view.getResources().getString(R.string.canBetter));
                     menuText.centerElement();

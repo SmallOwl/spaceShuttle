@@ -45,6 +45,12 @@ public class Constants {
     public final static int cometHeight = 17;
     public final static int defaultCometWeight = 1;
 
+    public final static float maxLandSpeed = (float) 0.7;
+    public final static float maxPerfectLandSpeed = (float) 0.3;
+    public final static int maxLandAngle = 15;
+    public final static int maxPerfectLandAngle = 5;
+    public final static int maxLangRange = 3;
+
     public static int scaleSmallCoef = 0;
     public static int scaleBigCoef = 0;
     public static int scaleLength = 50;
@@ -82,5 +88,5 @@ public class Constants {
 
     public static int defaultCameraX = landWidth/2;
     public static int defaultCameraY = smallWatchBlocksHeight/2;
-    public final static int advertisingCounter = 2;
+    public final static int advertisingCounter = 4;
 }
