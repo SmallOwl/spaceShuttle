@@ -194,6 +194,11 @@ public class initThread extends Thread {
             Constants.scaleSmallCoef = (int) Math.ceil(gameView.getWidth()/Constants.smallWatchBlocksWidth);
             Constants.scaleBigCoef = (int) Math.ceil(gameView.getWidth()/Constants.bigWatchBlocksWidth);
         }
+        if(Constants.scaleSmallCoef == 1){
+            Constants.scaleBigCoef = 1;
+            Constants.bigWatchBlocksHeight = Constants.smallWatchBlocksHeight;
+            Constants.bigWatchBlocksWidth = Constants.smallWatchBlocksWidth;
+        }
     }
 
     private void initUI() {

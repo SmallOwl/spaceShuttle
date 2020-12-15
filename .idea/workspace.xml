@@ -40,9 +40,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47c8bf22-4e3c-4a0b-8ffc-b18297af93e4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/spaceshuttle/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/spaceshuttle/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/spaceshuttle/gameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/spaceshuttle/gameLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/spaceshuttle/Components/Threads/initThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/spaceshuttle/Components/Threads/initThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/logo.bmp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +101,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DEBUGGABLE_DEVICE" value="xiaomi-redmi_note_6_pro-5716d33d" />
+    <property name="DEBUGGABLE_DEVICE" value="emulator-5554" />
     <property name="DEBUGGABLE_PROCESS" value="com.example.spaceshuttle" />
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="5716d33d" />
@@ -103,7 +111,8 @@
     <property name="SHOW_ALL_PROCESSES" value="true" />
     <property name="android-custom-viewC:/Users/makss/AppData/Local/Android/Sdk/sources/android-29/android/view/View.java_SELECTED" value="View" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/raw" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="multi-representation-previewC:/Users/makss/AppData/Local/Android/Sdk/sources/android-29/android/view/View.java_selected" value="Custom views" />
     <property name="project.structure.last.edited" value="Build Variants" />
     <property name="project.structure.proportion" value="0.17" />
@@ -116,11 +125,11 @@
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="com.example.spaceshuttle.Components" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\makss\Desktop\spaceShuttle\app\src\main\res\drawable" />
+      <recent name="C:\Users\makss\Desktop\spaceShuttle\app\src\main\res\raw" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.example.spaceshuttle.Components.UI.Joystick" />
+    <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="com.example.spaceshuttle.Components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -131,8 +140,9 @@
       <recent name="com.example.spaceshuttle.Components.UI.Hand" />
       <recent name="com.example.spaceshuttle.Components.UI.soundButton" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\makss\Desktop\spaceShuttle\app\src\main\res\raw" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.spaceshuttle.Components.UI.Joystick" />
+      <recent name="com.example.spaceshuttle.Components" />
     </key>
   </component>
   <component name="RunManager">
@@ -233,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604841307938</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Change land coefficients">
+      <created>1605054881723</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1605054881723</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -273,7 +290,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adding bas for fuelStations" />
     <MESSAGE value="Bugfix with studyHand" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bugfix with studyHand" />
+    <MESSAGE value="Change land coefficients" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change land coefficients" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="42" key="#Inspections" timestamp="1599142601650">
@@ -320,9 +338,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="459" y="196" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog/0.0.1366.768@0.0.1366.768" timestamp="1598535173484" />
-    <state x="413" y="131" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1599933847350">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="387" y="175" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605203033841">
+      <screen x="0" y="0" width="1280" height="1024" />
     </state>
+    <state x="387" y="175" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.1024@0.0.1280.1024" timestamp="1605203033841" />
     <state x="413" y="131" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.768@0.0.1366.768" timestamp="1599933847350" />
     <state x="438" y="87" key="#xdebugger.evaluate" timestamp="1597531498142">
       <screen x="0" y="0" width="1366" height="768" />
@@ -332,6 +351,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="379" y="244" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.768@0.0.1366.768" timestamp="1597406068945" />
+    <state x="92" y="92" width="1096" height="840" key="AVDManager" timestamp="1605205118918">
+      <screen x="0" y="0" width="1280" height="1024" />
+    </state>
+    <state x="92" y="92" width="1096" height="840" key="AVDManager/0.0.1280.1024@0.0.1280.1024" timestamp="1605205118918" />
     <state x="263" y="139" key="AndroidCreateResourceDirectoryDialog" timestamp="1598448315512">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -344,45 +367,59 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="541" y="197" key="AndroidCreateXmlResourceDialog/0.0.1366.768@0.0.1366.768" timestamp="1599863803858" />
-    <state x="538" y="149" key="AndroidProcessChooserDialog" timestamp="1604840567260">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="504" y="199" key="AndroidProcessChooserDialog" timestamp="1605205287303">
+      <screen x="0" y="0" width="1280" height="1024" />
     </state>
+    <state x="504" y="199" key="AndroidProcessChooserDialog/0.0.1280.1024@0.0.1280.1024" timestamp="1605205287303" />
     <state x="538" y="149" key="AndroidProcessChooserDialog/0.0.1366.768@0.0.1366.768" timestamp="1604840567260" />
-    <state x="310" y="0" key="CommitChangelistDialog2" timestamp="1604841306407">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="290" y="0" key="CommitChangelistDialog2" timestamp="1605054878639">
+      <screen x="0" y="0" width="1280" height="1024" />
     </state>
+    <state x="290" y="0" key="CommitChangelistDialog2/0.0.1280.1024@0.0.1280.1024" timestamp="1605054878639" />
     <state x="310" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1604841306407" />
-    <state width="1323" height="278" key="GridCell.Tab.0.bottom" timestamp="1604841101130">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="419" y="267" key="FileChooserDialogImpl" timestamp="1605208194106">
+      <screen x="0" y="0" width="1280" height="1024" />
     </state>
+    <state x="419" y="267" key="FileChooserDialogImpl/0.0.1280.1024@0.0.1280.1024" timestamp="1605208194106" />
+    <state width="1237" height="276" key="GridCell.Tab.0.bottom" timestamp="1605207843761">
+      <screen x="0" y="0" width="1280" height="1024" />
+    </state>
+    <state width="1237" height="276" key="GridCell.Tab.0.bottom/0.0.1280.1024@0.0.1280.1024" timestamp="1605207843761" />
     <state width="1323" height="278" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1604841101130" />
-    <state width="1323" height="278" key="GridCell.Tab.0.center" timestamp="1604841101129">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1237" height="276" key="GridCell.Tab.0.center" timestamp="1605207843760">
+      <screen x="0" y="0" width="1280" height="1024" />
     </state>
+    <state width="1237" height="276" key="GridCell.Tab.0.center/0.0.1280.1024@0.0.1280.1024" timestamp="1605207843760" />
     <state width="1323" height="278" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1604841101129" />
-    <state width="1323" height="278" key="GridCell.Tab.0.left" timestamp="1604841101129">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1237" height="276" key="GridCell.Tab.0.left" timestamp="1605207843760">
+      <screen x="0" y="0" width="1280" height="1024" />
     </state>
+    <state width="1237" height="276" key="GridCell.Tab.0.left/0.0.1280.1024@0.0.1280.1024" timestamp="1605207843760" />
     <state width="1323" height="278" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1604841101129" />
-    <state width="1323" height="278" key="GridCell.Tab.0.right" timestamp="1604841101130">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1237" height="276" key="GridCell.Tab.0.right" timestamp="1605207843761">
+      <screen x="0" y="0" width="1280" height="1024" />
     </state>
+    <state width="1237" height="276" key="GridCell.Tab.0.right/0.0.1280.1024@0.0.1280.1024" timestamp="1605207843761" />
     <state width="1323" height="278" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1604841101130" />
-    <state width="1323" height="278" key="GridCell.Tab.1.bottom" timestamp="1604841101130">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1237" height="395" key="GridCell.Tab.1.bottom" timestamp="1605205454155">
+      <screen x="0" y="0" width="1280" height="1024" />
     </state>
+    <state width="1237" height="395" key="GridCell.Tab.1.bottom/0.0.1280.1024@0.0.1280.1024" timestamp="1605205454155" />
     <state width="1323" height="278" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1604841101130" />
-    <state width="1323" height="278" key="GridCell.Tab.1.center" timestamp="1604841101130">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1237" height="395" key="GridCell.Tab.1.center" timestamp="1605205454155">
+      <screen x="0" y="0" width="1280" height="1024" />
     </state>
+    <state width="1237" height="395" key="GridCell.Tab.1.center/0.0.1280.1024@0.0.1280.1024" timestamp="1605205454155" />
     <state width="1323" height="278" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1604841101130" />
-    <state width="1323" height="278" key="GridCell.Tab.1.left" timestamp="1604841101130">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1237" height="395" key="GridCell.Tab.1.left" timestamp="1605205454155">
+      <screen x="0" y="0" width="1280" height="1024" />
     </state>
+    <state width="1237" height="395" key="GridCell.Tab.1.left/0.0.1280.1024@0.0.1280.1024" timestamp="1605205454155" />
     <state width="1323" height="278" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1604841101130" />
-    <state width="1323" height="278" key="GridCell.Tab.1.right" timestamp="1604841101130">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state width="1237" height="395" key="GridCell.Tab.1.right" timestamp="1605205454155">
+      <screen x="0" y="0" width="1280" height="1024" />
     </state>
+    <state width="1237" height="395" key="GridCell.Tab.1.right/0.0.1280.1024@0.0.1280.1024" timestamp="1605205454155" />
     <state width="1323" height="278" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1604841101130" />
     <state x="436" y="86" key="RollbackChangesDialog" timestamp="1604703992802">
       <screen x="0" y="0" width="1366" height="768" />
@@ -396,14 +433,19 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="184" y="26" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1597361190271" />
-    <state x="275" y="117" key="Vcs.Push.Dialog.v2" timestamp="1604841527217">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="258" y="156" key="Vcs.Push.Dialog.v2" timestamp="1605054886072">
+      <screen x="0" y="0" width="1280" height="1024" />
     </state>
+    <state x="258" y="156" key="Vcs.Push.Dialog.v2/0.0.1280.1024@0.0.1280.1024" timestamp="1605054886072" />
     <state x="275" y="117" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1604841527217" />
     <state width="691" height="392" key="XDebugger.FullValuePopup" timestamp="1604704581902">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="691" height="392" key="XDebugger.FullValuePopup/0.0.1366.768@0.0.1366.768" timestamp="1604704581902" />
+    <state x="456" y="290" key="chooseDestDirectoryDialog" timestamp="1605203450131">
+      <screen x="0" y="0" width="1280" height="1024" />
+    </state>
+    <state x="456" y="290" key="chooseDestDirectoryDialog/0.0.1280.1024@0.0.1280.1024" timestamp="1605203450131" />
     <state x="92" y="92" width="1182" height="584" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1600019884232">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -420,9 +462,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="674" y="0" key="refactoring.ChangeSignatureDialog/0.0.1366.768@0.0.1366.768" timestamp="1599689937004" />
-    <state x="339" y="172" key="run.anything.popup" timestamp="1604180187704">
-      <screen x="0" y="0" width="1366" height="768" />
+    <state x="318" y="229" key="run.anything.popup" timestamp="1605127395983">
+      <screen x="0" y="0" width="1280" height="1024" />
     </state>
+    <state x="318" y="229" key="run.anything.popup/0.0.1280.1024@0.0.1280.1024" timestamp="1605127395983" />
     <state x="339" y="172" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1604180187704" />
     <state x="339" y="36" width="672" height="676" key="search.everywhere.popup" timestamp="1604314672344">
       <screen x="0" y="0" width="1366" height="768" />
@@ -441,6 +484,11 @@
           <line>96</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/spaceshuttle/gameLogic.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -449,8 +497,8 @@
         <watch expression="checkPlatform.getPlatformStart() + (checkPlatform.getPlatformEnd() - checkPlatform.getPlatformStart())/2" language="JAVA" />
       </configuration>
       <configuration name="Remote">
-        <watch expression="parameters.getTop()" language="JAVA" />
-        <watch expression="(int)(parameters.getTop() + yStep)" language="JAVA" />
+        <watch expression="Constants.scaleSmallCoef" language="JAVA" />
+        <watch expression="Constants.scaleBigCoef" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
